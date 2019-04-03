@@ -49,7 +49,9 @@ Now, moving on to Bezier Curves, they were first introduced into theoretical mat
 It was not until an employee of the automobile maker Renault, and of Paul de Casteljau, of Citroen, that brought these curves into computer graphics.\cite{farouki2012bernstein}
 \section{Taylor Series vs Bernstein Polynomial}\label{sec:tsvsbp}
 Our aim is to approximate continuous functions on a closed interval of the real axis. Approximation of functions is mainly based on finding tangent lines on specific points in the given interval. So on some linear polynomial we can approximate it by finding a tangent at a given point. But if you consider functions, for example, $\sin x$ or  $e^{x^2} $, they are much more difficult to approximate them using tangent lines of the form $f(x) =mx+b$, rather than linear functions. So in this case we use polynomials and so we use Taylor approximations on these polynomials. Basically, we use differentiable calculus to find tangent lines on some given values of $x$. Back in our case the idea of tangent lines can be extended using polynomials of higher degree which are somehow considered ``tangent'' on a given curve, of course for some values of $x$.
-Let $p$ be a continuous function in the interval $[a,b]$. We can compute Taylor’s first degree polynomial $F_1(x)$ as $F_1(x)=p(r) + p'(r) (x – r)$, where $r\in[a,b]$ for $x$ `close' to $r$. If we want to consider Taylor’s second degree polynomial, we then can compute $F_2(x)= p(r) + p '(r) (x – r)+ \frac{1}{2!}p''(r) (x – r)^2$, where $r \in [a,b]$ for $x$ 'close' to r.
+Let $p$ be a continuous function in the interval $[a,b]$.
+We can compute Taylor’s first degree polynomial $F_1(x)$ as $F_1(x)=p(r) + p'(r) (x - r)$, where $r \in [a,b]$ for $x$ `close' to $r$.
+If we want to consider Taylor’s second degree polynomial, we then can compute $F_2(x)= p(r) + p '(r) (x - r)+ \frac{1}{2!}p''(r) (x - r)^2$, where $r \in [a,b]$ for $x$ 'close' to r.
 The graph of this approximating polynomial for $p$ is the tangent line.
 \begin{equation*}
     y=p(r)+p'(r)(x-r) \ \text{at}\ x=r
@@ -61,8 +63,9 @@ The graph of this approximating polynomial for $p$ is the tangent line.
     \label{fig:1}
 \end{figure}
 
-So we can from figure 1 that the polynomial $p$ could be a weird curve that it Is difficult to approximate it using a straight line of the form $y=mx+b$. So we use polynomials using the Taylor series.
-But in general, the function $p$ on the closed interval $[a,b]$ can be approximated with Taylor series of the form $F_n(x) = p(r) + p'(r)(x – r) + \frac{1}{2!}p''(r) (x – r)^2 + … + \frac{1}{n!} p^n(r)(x – r)^n$ for $x$ `close' to $r$.
+So we can from figure 1 that the polynomial $p$ could be a weird curve that it Is difficult to approximate it using a straight line of the form $y=mx+b$.
+So we use polynomials using the Taylor series.
+But in general, the function $p$ on the closed interval $[a,b]$ can be approximated with Taylor series of the form $F_n(x) = p(r) + p'(r)(x - r) + \frac{1}{2!}p''(r) (x - r)^2 + \dots + \frac{1}{n!} p^n(r)(x - r)^n$ for $x$ `close' to $r$.
 \paragraph{}
 We have already shown that Taylor series, give a way of approximating continuous functions using polynomials on a closed interval. But this method does not specify approximations on the whole interval but only near fixed points in the interval. Using Weierstrass’ thoughts and studies he have stated that any continuous function on a closed interval can be uniformly approximated by polynomials, such that we can find polynomials which do not approximate functions near fixed points in the interval, but on the whole interval. Those are called Bernstein polynomials.
 \section{Bernstein polynomials}
@@ -98,14 +101,17 @@ Hence this is the representation of this property in terms of a summation:
 \end{equation}
 \begin{figure}[h]
     \centering
-    \includegraphics[width=1, scale = 0.20]{BP.jpg}
+    \includegraphics[width=1pt, scale = 0.20]{BP.jpg}
     \caption{Graph of Bernstein Polynomial of degree $3$}
     \label{fig:2}
 \end{figure}
 \newpage
 We can see from figure \ref{fig:2}, a representation of a Bernstein basis with degree $3$. We can observe there is a symmetric relationship between the curves and this is occurred from $x$ and $(1-x)$ in the definition of the Bernstein basis. Each maximum of each $i$th curve occurs at $x=i/n$. (eg the maximum of $B_{1,3}$ occurs at $x=1/3$ as shown by the crosshairs in the graph) As $n$ increases and there are more curves to add up to $1$, they are going to drop down closer to the x-axis, resulting in somehow the contraction of each maximum point. What we mean by this, the `neighbourhood' of points around the maximum point will become wider. Plotting everything down, we can see a series of hills at which there is a decreasing gradient in $[1/3, 1/2]$ and then the gradient increases in $[1/2, 1]$.
 \subsection{Overview of the proof}
-For the above case to hold we need to show that $\lim_{n \rightarrow{\infty} }B_n(f)(x)=f(x)$ and that the convergence is uniform. As we have mentioned above, maximum point of each of the curves occurs at $x=\frac{i}{n}$, for $i=0,1,…,n$. This implies that the greatest contribution to the weighted average of points of each polynomial is split into partial sums where $\frac{i}{n}$ is closest to $x$. The main idea is that we need to show that our claim holds, because there exists some $\delta>0$ such that when we split the summation into two parts, one part will take all the points of
+For the above case to hold we need to show that $\lim_{n \rightarrow{\infty} }B_n(f)(x)=f(x)$ and that the convergence is uniform.
+As we have mentioned above, maximum point of each of the curves occurs at $x=\frac{i}{n}$, for $i=0,1, \dots ,n$.
+This implies that the greatest contribution to the weighted average of points of each polynomial is split into partial sums where $\frac{i}{n}$ is closest to $x$.
+The main idea is that we need to show that our claim holds, because there exists some $\delta>0$ such that when we split the summation into two parts, one part will take all the points of
 \begin{equation}
 \left|\frac{i}{n}\ - x\right|< \delta    
 \end{equation}
@@ -427,7 +433,7 @@ To start with the proof, we will consider an event $A$, whose probability of it 
 Then, we assume $n$ experiments are conducted and the player is to be paid the sum $F(\frac{m}{n})$, if the event occurs $m$ times, where $F$ is a continuous function.\cite{bertrand15}
 Under these circumstances, we will now calculate the expected value of the sum paid to the player, which is:
 \begin{equation*}
-    E_n = \sum_{m=0}^{n}F\left(\frac{m}{n}\right)\cdot{m\choose n}\cdot x^n\cdot(1-x)^{n-m}
+    E_n = \sum_{m=0}^{n} F \left( \frac{m}{n} \right) \binom{m}{n} x^n (1-x)^{n-m}
 \end{equation*}
 Due to continuity of $F$, we can have some number, $\delta>0$, such that we have the following inequality,
 \begin{equation*}
